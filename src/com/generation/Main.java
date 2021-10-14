@@ -1,11 +1,6 @@
 package com.generation;
 
-import com.sun.corba.se.spi.orbutil.proxy.LinkedInvocationHandler;
-
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Main {
 
@@ -56,7 +51,7 @@ public class Main {
         /*
         Asi se declara una collection en donde no se pueden repetir elementos.
         Es el más lento
-        El orden de los elementos es fijo.
+        El orden de los elementos es fijo, según el valor.
         No tiene minima capacidad
         */
         frutas2.add("Sandia");
@@ -91,7 +86,7 @@ public class Main {
             System.out.println(fruta);
         }
 
-        System.out.println("-- Luis Angel D. --");
+        /*System.out.println("-- Luis Angel D. --");
 
         final Set hashSet = new HashSet(1_000_000);
         final Long startHashSetTime = System.currentTimeMillis();
@@ -115,7 +110,68 @@ public class Main {
             linkedHashSet.add(i);
         }
         final Long endLinkedHashSetTime = System.currentTimeMillis();
-        System.out.println("Time spent by LinkedHashSet: " + (endLinkedHashSetTime - startLinkedHashSetTime));
+        System.out.println("Time spent by LinkedHashSet: " + (endLinkedHashSetTime - startLinkedHashSetTime));*/
+        System.out.println("--------------------------------------");
+
+        List<String> frutas4 = new ArrayList();
+        //list si admite elementos duplicados
+        frutas4.add("Sandia");
+        frutas4.add("Fresa");
+        frutas4.add("Plátano");
+        frutas4.add("Pera");
+        frutas4.add("Manzana");
+        frutas4.add("Uva");
+        frutas4.add("Sandia");
+
+        for (String fruta : frutas4
+        ) {
+            System.out.println(fruta);
+        }
+        System.out.println("--------------------------------------");
+        System.out.println(frutas4.get(3));  //se obtiene un solo elemento con un index específico
+        System.out.println("--------------------------------------");
+        int indice = frutas4.indexOf("Uva"); // se le asigna el indice que contiene ese elemento
+        System.out.println(frutas4.get(indice));
+
+        System.out.println("--------------------------------------");
+        List<String> frutas5 = new LinkedList<>();
+        //list si admite elementos duplicados, es una lista doblemente enlazada (sabe cuáles son los elementos adyacentes).
+
+        frutas5.add("Sandia");
+        frutas5.add("Fresa");
+        frutas5.add("Plátano");
+        frutas5.add("Pera");
+        frutas5.add("Manzana");
+        frutas5.add("Uva");
+        frutas5.add("Sandia");
+
+        for (String fruta : frutas5
+        ) {
+            System.out.println(fruta);
+        }
+        System.out.println("---------------------------------------------------------");
+
+        Map<Integer,String> universidades = new HashMap<Integer,String>();
+        /*
+            Asocia claves con valores
+            No puede tener claves repetidas
+            Solo un valor asociado a la clave
+        */
+        universidades.put(1, "UNAM");
+        universidades.put(2, "IPN");
+        universidades.put(3, "UAEM");
+        universidades.put(4, "UAM");
+        universidades.put(5, "TESCO");
+
+        for (int i =1 ; i <= 5; i++){
+            System.out.println("Valor = "+ universidades.get(i));
+        } //solo se obtiene valor y funciona si la llave es numero
+
+        System.out.println("---------------------------------------------------------");
+
+        for (Map.Entry<Integer, String> universidad : universidades.entrySet()) {
+            System.out.println("Clave = " + universidad.getKey() + " | Valor = " + universidad.getValue());
+        } //funciona sin importar los tipos
 
     }
 }
